@@ -31,6 +31,15 @@ class SKToolbar: UIToolbar {
         setupApperance()
         setupToolbar()
     }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if let view = super.hitTest(point, with: event) {
+            if SKMesurement.screenWidth - point.x < 50 { 
+                return view
+            }
+        }
+        return nil
+    }
 }
 
 private extension SKToolbar {
